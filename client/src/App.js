@@ -8,19 +8,19 @@ const App = () => {
   const [post, setPost] = useState("");
   const [responseToPost, setResponseToPost] = useState("");
 
-  useEffect(() => {
-    callApi()
-      .then((res) => setResponse(res.express))
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   callApi()
+  //     .then((res) => setResponse(res.express))
+  //     .catch((err) => console.log(err));
+  // }, []);
 
-  const callApi = async () => {
-    const response = await fetch("/api/hello");
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
+  // const callApi = async () => {
+  //   const response = await fetch("/api/hello");
+  //   const body = await response.json();
+  //   if (response.status !== 200) throw Error(body.message);
 
-    return body;
-  };
+  //   return body;
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,8 +42,8 @@ const App = () => {
         <h1>Header</h1>
       </header>
       <Switch>
-        {routes.map(({ path, component, exact }) => (
-          <Route path={path} component={component} exact={exact} />
+        {routes.map(({ path, component, exact }, index) => (
+          <Route key={index} path={path} component={component} exact={exact} />
         ))}
       </Switch>
       {/* <p>{response}</p>
