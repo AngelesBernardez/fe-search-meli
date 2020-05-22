@@ -32,18 +32,14 @@ const Results = () => {
       .slice(0, 4)
       .map(({ id, free_shipping, title, picture, price }, index) => {
         return (
-          <li
-            className="item centered-in-grid"
+          <ResultItem
             key={index}
-            onClick={() => history.push(`/items/${id}`)}
-          >
-            <ResultItem
-              freeShipping={free_shipping}
-              title={title}
-              picture={picture}
-              price={price}
-            />
-          </li>
+            handleClick={() => history.push(`/items/${id}`)}
+            freeShipping={free_shipping}
+            title={title}
+            picture={picture}
+            price={price}
+          />
         );
       });
   };

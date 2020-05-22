@@ -1,17 +1,18 @@
 .item {
   background-color: #fff;
-  padding: 1rem;
+  cursor: pointer;
   display: flex;
+  padding: 1rem;
   position: relative;
 }
 
 .item::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  height: 1px;
-  width: 95%;
   border-bottom: 1px solid #eeeeee;
+  bottom: 0;
+  content: "";
+  height: 1px;
+  position: absolute;
+  width: 95%;
 }
 
 .item:last-child::before {
@@ -24,8 +25,8 @@
 }
 
 .item-image img {
-  width: 100%;
   border-radius: 4px;
+  width: 100%;
 }
 
 .item-info {
@@ -33,10 +34,11 @@
 }
 
 .item-price {
-  margin-bottom: 2rem;
+  align-items: center;
   display: flex;
   font-size: 1.5rem;
-  align-items: center;
+  margin-bottom: 2rem;
+  margin-top: 0.6rem;
 }
 .item-price img {
   margin-left: 0.4rem;
@@ -44,6 +46,6 @@
 }
 
 .item-title {
-  font-size: 1.125rem;
   color: #333333;
+  font-size: 1.125rem;
 }

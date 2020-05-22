@@ -2,9 +2,9 @@ import React from "react";
 
 import "./ResultItem.css";
 
-const ResultItem = ({ freeShipping, title, picture, price }) => {
+const ResultItem = ({ freeShipping, handleClick, title, picture, price }) => {
   return (
-    <React.Fragment>
+    <li className="item centered-in-grid" onClick={handleClick}>
       <div className="item-image">
         <img src={picture} alt={title} />
       </div>
@@ -15,7 +15,7 @@ const ResultItem = ({ freeShipping, title, picture, price }) => {
         </p>
         <p className="item-title">{title}</p>
       </div>
-    </React.Fragment>
+    </li>
   );
 };
 
