@@ -1,0 +1,27 @@
+.search-input-container {
+  position: relative;
+}
+
+input {
+  border-radius: 2px;
+  border: none;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  padding: 0.8rem;
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+}
+
+.search-input-container::after {
+  background: url("/ic_Search@2x.png") no-repeat;
+  background-size: 20px;
+  content: "";
+  height: 40px;
+  position: absolute;
+  right: -10px;
+  top: 13px;
+  width: 40px;
+}
