@@ -18,7 +18,12 @@ const ResultItem = ({
       <div className="item-info">
         <div className="top-block">
           <p className="item-price">
-            {price.amount}
+            ${new Intl.NumberFormat("es-AR").format(price.amount)}
+            {price.decimals > 0 && (
+              <span className="decimals">
+                {price.decimals > 9 ? price.decimals : "0" + price.decimals}
+              </span>
+            )}
             {freeShipping && (
               <img src="/ic_shipping@2x.png" alt="Envio gratis" />
             )}

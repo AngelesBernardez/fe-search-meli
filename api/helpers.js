@@ -1,5 +1,5 @@
 const getWholeNumber = (amount) => {
-  return amount.toString().split(".")[0];
+  return parseInt(amount.toString().split(".")[0]);
 };
 
 const getDecimals = (amount) => {
