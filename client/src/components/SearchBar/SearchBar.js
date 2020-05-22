@@ -14,7 +14,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="search-bar">
+    <div className="grid-layout search-bar">
       <img className="logo" src="/Logo_ML@2x.png" alt="Mercado Libre Logo" />
       <div className="search-input-component">
         <SearchInput

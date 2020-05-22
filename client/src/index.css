@@ -5,4 +5,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #eeeeee;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+}
+
+.grid-layout {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+}
+
+/* .double-rows {
+  grid-template-rows: 1fr;
+} */
+
+.centered-in-grid {
+  grid-column: col-start 2 / span 10;
+}
+
+.no-row-gap {
+  row-gap: 0;
 }

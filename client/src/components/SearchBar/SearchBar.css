@@ -1,11 +1,7 @@
 .search-bar {
   align-content: center;
   background-color: #ffe600;
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(12, [col-start] 1fr);
   height: 70px; /*Change*/
-  padding: 0 20px;
 }
 
 .search-bar .logo {

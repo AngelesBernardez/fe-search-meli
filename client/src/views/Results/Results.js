@@ -1,6 +1,8 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { api } from "./../../api";
+import ResultItem from "./../../components/ResultItem/ResultItem";
+import "./Results.css";
 
 const Results = () => {
   const [items, setItems] = useState([]);
@@ -25,21 +27,31 @@ const Results = () => {
     fetchResults();
   }, [fetchResults]);
 
-  //Temporary awful
   const renderProducts = () => {
-    return items.map(({ id, title }, index) => {
-      return (
-        <p key={index} onClick={() => history.push(`/items/${id}`)}>
-          {title}
-        </p>
-      );
-    });
+    return items
+      .slice(0, 4)
+      .map(({ id, free_shipping, title, picture, price }, index) => {
+        return (
+          <li
+            className="item centered-in-grid"
+            key={index}
+            onClick={() => history.push(`/items/${id}`)}
+          >
+            <ResultItem
+              freeShipping={free_shipping}
+              title={title}
+              picture={picture}
+              price={price}
+            />
+          </li>
+        );
+      });
   };
   return (
-    <div>
-      <h1>This is the results page.</h1>
+    <ul className="results-container grid-layout no-row-gap">
+      <li className="centered-in-grid">Here breadcrumb</li>
       {items.length > 0 && renderProducts()}
-    </div>
+    </ul>
   );
 };
 
