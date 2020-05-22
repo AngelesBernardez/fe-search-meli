@@ -16,7 +16,7 @@ const Results = () => {
     const item = search.get("search");
 
     api
-      .get(`/api/items?search=${item}`)
+      .get(`/api/items?q=${item}`)
       .then((response) => {
         setItems(response.data.items);
       })

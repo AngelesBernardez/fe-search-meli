@@ -5,11 +5,12 @@ const {
 } = require("./helpers");
 const axios = require("axios");
 const api = axios.create({
-  baseURL: "https://api.mercadolibre.com/",
+  baseURL: "https://api.mercadolibre.com",
 });
 
 const items = (req, res) => {
   const { q } = req.query;
+
   api
     .get(`/sites/MLA/search?q=${q}`)
     .then((response) => {
@@ -31,15 +32,8 @@ const itemDescription = (id) => {
 const itemDetailsAndDescription = (req, res) => {
   const { id } = req.params;
   let finalResponse = {};
-  axios
-    .all([
-      itemDetails(id),
-      itemDescription(id),
-      //   .catch((error) => {
-      //   throw new Error(error);
-      // }),
-    ])
-    .then(
+  try {
+    axios.all([itemDetails(id), itemDescription(id)]).then(
       axios.spread((resDetails, resDescription) => {
         let item = {
           ...formatSingleItem(resDetails.data),
@@ -54,6 +48,9 @@ const itemDetailsAndDescription = (req, res) => {
         res.send(finalResponse);
       })
     );
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 const formatItemsResults = (results) => {
