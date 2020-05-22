@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { api } from "./../../api";
 
 const Results = () => {
-  const [results, setResults] = useState([]);
+  const [items, setItems] = useState([]);
   const location = useLocation();
+  const history = useHistory();
 
   useEffect(() => {
     fetchResults();
@@ -17,16 +18,27 @@ const Results = () => {
     api
       .get(`/api/items?search=${item}`)
       .then((response) => {
-        setResults(response.data);
+        setItems(response.data.items);
       })
       .catch((error) => {
         throw new Error(error);
       });
   };
 
+  //Temporary awful
+  const renderProducts = () => {
+    return items.map(({ id, title }, index) => {
+      return (
+        <p key={index} onClick={() => history.push(`/items/${id}`)}>
+          {title}
+        </p>
+      );
+    });
+  };
   return (
     <div>
       <h1>This is the results page.</h1>
+      {items.length > 0 && renderProducts()}
     </div>
   );
 };
