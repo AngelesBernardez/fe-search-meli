@@ -33,19 +33,33 @@
   margin-left: 1rem;
 }
 
+.top-block {
+  align-items: center;
+  display: flex;
+  margin-bottom: 2rem;
+  margin-top: 0.6rem;
+}
+
 .item-price {
   align-items: center;
   display: flex;
   font-size: 1.5rem;
-  margin-bottom: 2rem;
-  margin-top: 0.6rem;
 }
+
 .item-price img {
   margin-left: 0.4rem;
   width: 25px;
 }
 
+.item-location {
+  color: #666666;
+  font-size: 0.75rem;
+  position: absolute;
+  right: 10rem;
+}
+
 .item-title {
   color: #333333;
   font-size: 1.125rem;
+  max-width: 400px;
 }

@@ -30,7 +30,7 @@ const Results = () => {
   const renderProducts = () => {
     return items
       .slice(0, 4)
-      .map(({ id, free_shipping, title, picture, price }, index) => {
+      .map(({ id, free_shipping, location, title, picture, price }, index) => {
         return (
           <ResultItem
             key={index}
@@ -39,6 +39,7 @@ const Results = () => {
             title={title}
             picture={picture}
             price={price}
+            location={location}
           />
         );
       });
