@@ -7,7 +7,7 @@ input {
   border: none;
   box-sizing: border-box;
   font-size: 0.9rem;
-  padding: 0.8rem;
+  padding: 0.7rem;
   width: 100%;
 }
 
@@ -22,6 +22,6 @@ input:focus {
   height: 40px;
   position: absolute;
   right: -10px;
-  top: 13px;
+  top: 12px;
   width: 40px;
 }

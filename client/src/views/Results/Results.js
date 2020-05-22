@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { api } from "./../../api";
 
@@ -7,11 +7,7 @@ const Results = () => {
   const location = useLocation();
   const history = useHistory();
 
-  useEffect(() => {
-    fetchResults();
-  }, []);
-
-  const fetchResults = () => {
+  const fetchResults = useCallback(() => {
     const search = new URLSearchParams(location.search);
     const item = search.get("search");
 
@@ -23,7 +19,11 @@ const Results = () => {
       .catch((error) => {
         throw new Error(error);
       });
-  };
+  }, [location.search]);
+
+  useEffect(() => {
+    fetchResults();
+  }, [fetchResults]);
 
   //Temporary awful
   const renderProducts = () => {

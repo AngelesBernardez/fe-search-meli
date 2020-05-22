@@ -2,10 +2,15 @@ import React from "react";
 
 import "./SearchInput.css";
 
-const SearchInput = ({ placeholderText }) => {
+const SearchInput = ({ handleEnter, handleInput, placeholderText }) => {
   return (
     <div className="search-input-container">
-      <input placeholder={placeholderText} />
+      <input
+        onChange={handleInput}
+        onKeyDown={handleEnter}
+        placeholder={placeholderText}
+        type="text"
+      />
     </div>
   );
 };
