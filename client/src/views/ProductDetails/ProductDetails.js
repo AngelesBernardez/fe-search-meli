@@ -29,17 +29,17 @@ const ProductDetails = () => {
   }, [id]);
 
   const { condition, description, picture, price, title } = product;
-  console.log(price);
   return (
     <div className="product-details grid-layout">
       <div className="product-container centered-in-grid">
         <div className="left-block">
           <ImageItem picture={picture} altText={title} bigger />
-          <div className="description"></div>
-          <TitleAndParagraph
-            title="Descripción del producto"
-            paragraph={description}
-          />
+          <div className="description">
+            <TitleAndParagraph
+              title="Descripción del producto"
+              paragraph={description}
+            />
+          </div>
         </div>
         <div className="right-block">
           <SmallText text={condition === "used" ? "Usado" : "Nuevo"} />

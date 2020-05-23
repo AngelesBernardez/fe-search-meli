@@ -5,8 +5,8 @@ import "./TitleAndParagraph.css";
 const TitleAndParagraph = ({ paragraph, title }) => {
   return (
     <React.Fragment>
-      <h4 class="paragraph-title">{title}</h4>
-      <p class="paragraph">{paragraph}</p>
+      <h4 className="paragraph-title">{title}</h4>
+      <p className="paragraph">{paragraph}</p>
     </React.Fragment>
   );
 };

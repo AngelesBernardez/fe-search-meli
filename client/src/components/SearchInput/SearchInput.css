@@ -6,8 +6,8 @@ input {
   border-radius: 2px;
   border: none;
   box-sizing: border-box;
-  font-size: 0.9rem;
-  padding: 0.7rem;
+  font-size: 1.125rem;
+  padding: 0.6rem;
   width: 100%;
 }
 
@@ -18,10 +18,13 @@ input:focus {
 .search-input-container::after {
   background: url("/ic_Search@2x.png") no-repeat;
   background-size: 20px;
+  background-color: #eeeeee;
+  background-position: 11px 12px;
+  right: 0px;
   content: "";
   height: 40px;
   position: absolute;
-  right: -10px;
-  top: 12px;
+  right: 0px;
+  top: 0px;
   width: 40px;
 }
