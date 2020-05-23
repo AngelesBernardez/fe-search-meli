@@ -1,11 +1,13 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { api } from "./../../api";
+import Breadcrumb from "./../../components/Breadcrumb/Breadcrumb";
 import ResultItem from "./../../components/ResultItem/ResultItem";
 import "./Results.css";
 
 const Results = () => {
   const [items, setItems] = useState([]);
+  const [categories, setCategories] = useState([]);
   const location = useLocation();
   const history = useHistory();
 
@@ -17,6 +19,7 @@ const Results = () => {
       .get(`/api/items?q=${item}`)
       .then((response) => {
         setItems(response.data.items);
+        setCategories(response.data.categories);
       })
       .catch((error) => {
         throw new Error(error);
@@ -44,9 +47,12 @@ const Results = () => {
         );
       });
   };
+
   return (
     <ul className="results-container grid-layout no-row-gap">
-      <li className="centered-in-grid">Here breadcrumb</li>
+      <li className="centered-in-grid">
+        {categories.length > 0 && <Breadcrumb content={categories} />}
+      </li>
       {items.length > 0 && renderProducts()}
     </ul>
   );

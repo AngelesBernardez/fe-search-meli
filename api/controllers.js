@@ -1,5 +1,6 @@
 const {
   addAuthor,
+  formatCategories,
   formatSingleItem,
   formatItemsResponse,
 } = require("./helpers");
@@ -14,7 +15,7 @@ const items = (req, res) => {
   api
     .get(`/sites/MLA/search?q=${q}`)
     .then((response) => {
-      res.send(formatItemsResults(response.data.results));
+      res.send(formatItemsResults(response.data));
     })
     .catch((error) => {
       throw new Error(error);
@@ -56,9 +57,8 @@ const itemDetailsAndDescription = (req, res) => {
 const formatItemsResults = (results) => {
   return {
     author: addAuthor(),
-    // categories: results.filters,
-    //COMES EMPTY IN THE API RESPONSE
-    items: formatItemsResponse(results),
+    categories: formatCategories(results.filters[0]),
+    items: formatItemsResponse(results.results),
   };
 };
 

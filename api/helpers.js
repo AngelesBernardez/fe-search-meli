@@ -40,8 +40,15 @@ const addAuthor = () => {
   };
 };
 
+const formatCategories = (categories) => {
+  const mainCategory = categories.values[0];
+  const subCategories = mainCategory.path_from_root.filter((item) => item.name);
+  return [mainCategory.name, ...subCategories.map((cat) => cat.name)];
+};
+
 module.exports = {
   addAuthor,
+  formatCategories,
   formatSingleItem,
   formatItemsResponse,
 };

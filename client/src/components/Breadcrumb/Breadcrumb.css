@@ -1,0 +1,5 @@
+ul.breadcrumb {
+  display: flex;
+  list-style: none;
+  margin: 1rem 0;
+}

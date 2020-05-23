@@ -1,0 +1,20 @@
+.breadcrumb-item {
+  color: #666666;
+  font-size: 0.875rem;
+  position: relative;
+  margin-right: 1.7rem;
+}
+
+.breadcrumb-item::after {
+  content: ">";
+  position: absolute;
+  right: -18px;
+}
+
+.breadcrumb-item:last-child {
+  font-weight: 700;
+}
+
+.breadcrumb-item:last-child::after {
+  content: "";
+}
