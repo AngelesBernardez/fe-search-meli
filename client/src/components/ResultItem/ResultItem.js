@@ -1,6 +1,8 @@
 import React from "react";
 
 import "./ResultItem.css";
+import PriceItem from "../PriceItem/PriceItem";
+import ImageItem from "../ImageItem/ImageItem";
 
 const ResultItem = ({
   freeShipping,
@@ -12,22 +14,10 @@ const ResultItem = ({
 }) => {
   return (
     <li className="item centered-in-grid" onClick={handleClick}>
-      <div className="item-image">
-        <img src={picture} alt={title} />
-      </div>
+      <ImageItem picture={picture} altText={title} />
       <div className="item-info">
         <div className="top-block">
-          <p className="item-price">
-            ${new Intl.NumberFormat("es-AR").format(price.amount)}
-            {price.decimals > 0 && (
-              <span className="decimals">
-                {price.decimals > 9 ? price.decimals : "0" + price.decimals}
-              </span>
-            )}
-            {freeShipping && (
-              <img src="/ic_shipping@2x.png" alt="Envio gratis" />
-            )}
-          </p>
+          <PriceItem freeShipping={freeShipping} price={price} />
           <p className="item-location">{location}</p>
         </div>
         <p className="item-title">{title}</p>

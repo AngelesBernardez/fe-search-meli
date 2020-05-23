@@ -22,10 +22,6 @@ ul {
   grid-template-columns: repeat(12, [col-start] 1fr);
 }
 
-/* .double-rows {
-  grid-template-rows: 1fr;
-} */
-
 .centered-in-grid {
   grid-column: col-start 2 / span 10;
 }

@@ -7,6 +7,11 @@ const getDecimals = (amount) => {
 };
 
 const formatSingleItem = (item) => {
+  var location =
+    typeof item.address !== "undefined"
+      ? item.address.state_name
+      : item.seller_address.state.name;
+
   return {
     id: item.id,
     title: item.title,
@@ -17,7 +22,7 @@ const formatSingleItem = (item) => {
     },
     picture: item.thumbnail,
     condition: item.condition,
-    location: item.address.state_name, //The requirements did't ask for this but the Front End did.
+    location: location, //The requirements did't ask for this but the Front End did.
     free_shipping: item.shipping.free_shipping,
   };
 };

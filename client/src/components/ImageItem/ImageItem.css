@@ -1,0 +1,14 @@
+.item-image {
+  height: 180px;
+  width: 180px;
+}
+
+.item-image-bigger {
+  max-width: 680px;
+}
+
+.item-image img,
+.item-image-bigger img {
+  border-radius: 4px;
+  width: 100%;
+}

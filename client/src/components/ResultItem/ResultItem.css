@@ -19,16 +19,6 @@
   border: none;
 }
 
-.item-image {
-  height: 180px;
-  width: 180px;
-}
-
-.item-image img {
-  border-radius: 4px;
-  width: 100%;
-}
-
 .item-info {
   margin-left: 1rem;
 }
@@ -38,24 +28,6 @@
   display: flex;
   margin-bottom: 2rem;
   margin-top: 0.6rem;
-}
-
-.item-price {
-  align-items: center;
-  display: flex;
-  font-size: 1.5rem;
-}
-
-.item-price .decimals {
-  font-size: 1rem;
-  font-weight: 300;
-  position: relative;
-  top: -2px;
-}
-
-.item-price img {
-  margin-left: 0.4rem;
-  width: 25px;
 }
 
 .item-location {
