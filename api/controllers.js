@@ -38,6 +38,7 @@ const itemDetailsAndDescription = (req, res) => {
       axios.spread((resDetails, resDescription) => {
         let item = {
           ...formatSingleItem(resDetails.data),
+          category_id: resDetails.data.category_id,
           ["description"]: resDescription.data.plain_text,
         };
 
@@ -54,6 +55,19 @@ const itemDetailsAndDescription = (req, res) => {
   }
 };
 
+const itemCategories = (req, res) => {
+  const { id } = req.params;
+  api
+    .get(`/categories/${id}`)
+    .then((response) => {
+      const categories = response.data.path_from_root.map((cat) => cat.name);
+      res.send(categories);
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
+};
+
 const formatItemsResults = (results) => {
   return {
     author: addAuthor(),
@@ -64,5 +78,6 @@ const formatItemsResults = (results) => {
 
 module.exports = {
   items,
+  itemCategories,
   itemDetailsAndDescription,
 };
