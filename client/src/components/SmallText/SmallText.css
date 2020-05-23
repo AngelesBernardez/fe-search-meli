@@ -1,0 +1,12 @@
+.small-text {
+  font-size: 0.875rem;
+  padding-bottom: 1rem;
+}
+
+.small-text.smaller {
+  font-size: 0.75rem;
+}
+
+.small-text.grey {
+  color: #666666;
+}

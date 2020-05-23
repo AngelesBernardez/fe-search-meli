@@ -1,0 +1,11 @@
+.paragraph-title {
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.paragraph {
+  font-size: 1rem;
+  margin: 2rem 0;
+  max-width: 680px;
+  color: #666666;
+}

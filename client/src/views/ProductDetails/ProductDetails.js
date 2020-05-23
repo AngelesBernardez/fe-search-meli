@@ -4,6 +4,10 @@ import { api } from "./../../api";
 import "./ProductDetails.css";
 import PriceItem from "../../components/PriceItem/PriceItem";
 import ImageItem from "../../components/ImageItem/ImageItem";
+import MainButton from "../../components/MainButton/MainButton";
+import TitleAndParagraph from "../../components/TitleAndParagraph/TitleAndParagraph";
+import SmallText from "../../components/SmallText/SmallText";
+import ProductTitle from "../../components/ProductTitle/ProductTitle";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState({});
@@ -31,17 +35,19 @@ const ProductDetails = () => {
       <div className="product-container centered-in-grid">
         <div className="left-block">
           <ImageItem picture={picture} altText={title} bigger />
-          <div className="description">
-            <h4>Descripción del producto</h4>
-            <p>{description}</p>
-          </div>
+          <div className="description"></div>
+          <TitleAndParagraph
+            title="Descripción del producto"
+            paragraph={description}
+          />
         </div>
         <div className="right-block">
-          <p className="condition">
-            {condition === "used" ? "Usado" : "Nuevo"}
-          </p>
-          <h3 className="title">{title}</h3>
+          <SmallText text={condition === "used" ? "Usado" : "Nuevo"} />
+          <div className="title">
+            <ProductTitle title={title} bold />
+          </div>
           <PriceItem price={price} bigger />
+          <MainButton text="Comprar" />
         </div>
       </div>
     </div>

@@ -3,6 +3,8 @@ import React from "react";
 import "./ResultItem.css";
 import PriceItem from "../PriceItem/PriceItem";
 import ImageItem from "../ImageItem/ImageItem";
+import SmallText from "../SmallText/SmallText";
+import ProductTitle from "../ProductTitle/ProductTitle";
 
 const ResultItem = ({
   freeShipping,
@@ -18,9 +20,11 @@ const ResultItem = ({
       <div className="item-info">
         <div className="top-block">
           <PriceItem freeShipping={freeShipping} price={price} />
-          <p className="item-location">{location}</p>
+          <div className="item-location">
+            <SmallText text={location} smaller grey />
+          </div>
         </div>
-        <p className="item-title">{title}</p>
+        <ProductTitle title={title} />
       </div>
     </li>
   );
