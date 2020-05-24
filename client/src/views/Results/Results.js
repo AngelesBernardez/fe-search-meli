@@ -24,7 +24,6 @@ const Results = () => {
       })
       .catch((error) => {
         setError(true);
-        throw new Error(error);
       });
   }, [location.search]);
 
@@ -50,7 +49,9 @@ const Results = () => {
 
   return (
     <ul className="results-container grid-layout no-row-gap">
-      <li className="centered-in-grid">
+      <li
+        className={`centered-in-grid ${categories.length === 0 ? "empty" : ""}`}
+      >
         {categories.length > 0 && <Breadcrumb content={categories} />}
       </li>
       {items.length > 0 && renderProducts()}

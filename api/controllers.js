@@ -63,9 +63,12 @@ const itemDetailsAndDescription = (req, res) => {
 };
 
 const formatItemsResults = (results) => {
+  //Sometimes filters array comes empty.
+  const categories =
+    results.filters.length !== 0 ? formatCategories(results.filters) : [];
   return {
     author: addAuthor(),
-    categories: formatCategories(results.filters[0]),
+    categories,
     items: formatItemsResponse(results.results),
   };
 };

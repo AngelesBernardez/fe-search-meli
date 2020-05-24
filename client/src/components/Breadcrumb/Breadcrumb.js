@@ -10,7 +10,9 @@ const Breadcrumb = ({ content }) => {
   };
 
   return (
-    <ul className="breadcrumb">{content.length > 0 && renderItems(content)}</ul>
+    <ul className={`breadcrumb`}>
+      {content.length > 0 && renderItems(content)}
+    </ul>
   );
 };
 

@@ -8,9 +8,11 @@ const getDecimals = (amount) => {
 
 const formatSingleItem = (item) => {
   var location =
+    item.address !== null &&
+    item.address != "null" &&
     typeof item.address !== "undefined"
-      ? item.address.state_name
-      : item.seller_address.state.name;
+      ? item.address
+      : "";
 
   return {
     id: item.id,
@@ -22,7 +24,10 @@ const formatSingleItem = (item) => {
     },
     picture: item.thumbnail,
     condition: item.condition,
-    location: location, //The requirements did't ask for this but the Front End did.
+    location:
+      location !== null && typeof location !== "undefined"
+        ? location.state_name
+        : "", //The requirements did't ask for this but the Front End did.
     sold_quantity: item.sold_quantity,
     free_shipping: item.shipping.free_shipping,
   };
@@ -42,9 +47,11 @@ const addAuthor = () => {
 };
 
 const formatCategories = (categories) => {
-  const mainCategory = categories.values[0];
-  const subCategories = mainCategory.path_from_root.filter((item) => item.name);
-  return [mainCategory.name, ...subCategories.map((cat) => cat.name)];
+  const categoriesTree = categories
+    .filter((category) => category.id === "category")[0]
+    .values[0].path_from_root.map((cat) => cat.name);
+
+  return categoriesTree;
 };
 
 module.exports = {
