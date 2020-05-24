@@ -61,6 +61,7 @@ const itemCategories = (req, res) => {
     .get(`/categories/${id}`)
     .then((response) => {
       const categories = response.data.path_from_root.map((cat) => cat.name);
+      console.log(categories);
       res.send(categories);
     })
     .catch((error) => {

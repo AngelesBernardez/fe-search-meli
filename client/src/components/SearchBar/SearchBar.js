@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./SearchBar.css";
 import SearchInput from "./../SearchInput/SearchInput";
 
@@ -15,7 +15,9 @@ const SearchBar = () => {
 
   return (
     <div className="grid-layout search-bar">
-      <img className="logo" src="/Logo_ML@2x.png" alt="Mercado Libre Logo" />
+      <Link to="/">
+        <img className="logo" src="/Logo_ML@2x.png" alt="Mercado Libre Logo" />
+      </Link>
       <div className="search-input-component">
         <SearchInput
           handleEnter={(e) => handleEnter(e)}

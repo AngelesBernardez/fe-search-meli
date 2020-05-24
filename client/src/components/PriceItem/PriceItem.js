@@ -14,7 +14,11 @@ const PriceItem = ({ bigger, freeShipping, price }) => {
   return (
     <React.Fragment>
       {typeof price !== "undefined" && (
-        <p className={`price-item ${bigger && "bigger"}`}>
+        <p
+          className={`price-item ${
+            typeof bigger !== "undefined" ? "bigger" : ""
+          }`}
+        >
           {formatCurrency}
           {price.decimals > 0 && (
             <span className="decimals">

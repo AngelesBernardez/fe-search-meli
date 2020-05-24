@@ -23,6 +23,7 @@ const formatSingleItem = (item) => {
     picture: item.thumbnail,
     condition: item.condition,
     location: location, //The requirements did't ask for this but the Front End did.
+    sold_quantity: item.sold_quantity,
     free_shipping: item.shipping.free_shipping,
   };
 };
