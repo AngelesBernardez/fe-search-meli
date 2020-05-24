@@ -7,6 +7,10 @@ const SearchBar = () => {
   const [inputValue, setInputValue] = useState("");
   const history = useHistory();
 
+  /**
+   * Handles if the user presses the enter key.
+   * @param {Object} e - The event that was triggered.
+   */
   const handleEnter = (e) => {
     if (e.key === "Enter") {
       if (inputValue.value !== "") history.push(`/items?search=${inputValue}`);

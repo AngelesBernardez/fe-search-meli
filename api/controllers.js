@@ -1,14 +1,19 @@
 const {
   addAuthor,
-  formatCategories,
   formatSingleItem,
-  formatItemsResponse,
+  formatItemsResults,
 } = require("./helpers");
 const axios = require("axios");
 const api = axios.create({
   baseURL: "https://api.mercadolibre.com",
 });
 
+/**
+ * Makes the items request to MELI API.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @returns {undefined}.
+ */
 const items = (req, res) => {
   const { q } = req.query;
 
@@ -22,19 +27,40 @@ const items = (req, res) => {
     });
 };
 
+/**
+ * Makes the item's details request to MELI API.
+ * @param {string} id - The item's ID.
+ * @returns {Object}.API's response.
+ */
 const itemDetails = (id) => {
   return api.get(`/items/${id}`);
 };
 
+/**
+ * Makes the item's description request to MELI API.
+ * @param {string} id - The item's ID.
+ * @returns {Object}.API's response.
+ */
 const itemDescription = (id) => {
   return api.get(`/items/${id}/description`);
 };
 
+/**
+ * Makes a categories request to MELI API.
+ * @param {string} id - The categories ID.
+ * @returns {Object}.API's response.
+ */
 const itemCategories = (id) => {
   return api.get(`/categories/${id}`);
 };
 
-const itemDetailsAndDescription = (req, res) => {
+/**
+ * Makes the item's details, description and categories request to MELI API.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @returns {undefined}.
+ */
+const itemDetailsDescriptionAndCategories = (req, res) => {
   const { id } = req.params;
   let finalResponse = {};
   try {
@@ -62,18 +88,7 @@ const itemDetailsAndDescription = (req, res) => {
   }
 };
 
-const formatItemsResults = (results) => {
-  //Sometimes filters array comes empty.
-  const categories =
-    results.filters.length !== 0 ? formatCategories(results.filters) : [];
-  return {
-    author: addAuthor(),
-    categories,
-    items: formatItemsResponse(results.results),
-  };
-};
-
 module.exports = {
   items,
-  itemDetailsAndDescription,
+  itemDetailsDescriptionAndCategories,
 };

@@ -27,6 +27,11 @@ const Results = () => {
       });
   }, [location.search]);
 
+  /**
+   * Renders the list of products
+   * @param {Object} res - Express response object.
+   * @returns {Array}.An array of items.
+   */
   const renderProducts = () => {
     return items
       .slice(0, 4)
