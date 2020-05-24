@@ -18,12 +18,6 @@ It's running!
 
 ---
 
-### Front End Tests
-
-`yarn test`
-
----
-
 ### Notes
 
 - Client created with `create react-app`.
