@@ -30,43 +30,36 @@ const itemDescription = (id) => {
   return api.get(`/items/${id}/description`);
 };
 
+const itemCategories = (id) => {
+  return api.get(`/categories/${id}`);
+};
+
 const itemDetailsAndDescription = (req, res) => {
   const { id } = req.params;
   let finalResponse = {};
   try {
     axios.all([itemDetails(id), itemDescription(id)]).then(
       axios.spread((resDetails, resDescription) => {
-        let item = {
-          ...formatSingleItem(resDetails.data),
-          category_id: resDetails.data.category_id,
-          ["description"]: resDescription.data.plain_text,
-        };
-
-        finalResponse = {
-          author: addAuthor(),
-          item,
-        };
-
-        res.send(finalResponse);
+        itemCategories(resDetails.data.category_id).then((resCategories) => {
+          const categories = resCategories.data.path_from_root.map(
+            (cat) => cat.name
+          );
+          let item = {
+            ...formatSingleItem(resDetails.data),
+            ["description"]: resDescription.data.plain_text,
+          };
+          finalResponse = {
+            author: addAuthor(),
+            item,
+            categories,
+          };
+          res.send(finalResponse);
+        });
       })
     );
   } catch (error) {
     throw new Error(error);
   }
-};
-
-const itemCategories = (req, res) => {
-  const { id } = req.params;
-  api
-    .get(`/categories/${id}`)
-    .then((response) => {
-      const categories = response.data.path_from_root.map((cat) => cat.name);
-      console.log(categories);
-      res.send(categories);
-    })
-    .catch((error) => {
-      throw new Error(error);
-    });
 };
 
 const formatItemsResults = (results) => {
@@ -79,6 +72,5 @@ const formatItemsResults = (results) => {
 
 module.exports = {
   items,
-  itemCategories,
   itemDetailsAndDescription,
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { api } from "./../../api";
 import Breadcrumb from "./../../components/Breadcrumb/Breadcrumb";
@@ -8,10 +8,11 @@ import "./Results.css";
 const Results = () => {
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [error, setError] = useState(false);
   const location = useLocation();
   const history = useHistory();
 
-  const fetchResults = useCallback(() => {
+  useEffect(() => {
     const search = new URLSearchParams(location.search);
     const item = search.get("search");
 
@@ -22,13 +23,10 @@ const Results = () => {
         setCategories(response.data.categories);
       })
       .catch((error) => {
+        setError(true);
         throw new Error(error);
       });
   }, [location.search]);
-
-  useEffect(() => {
-    fetchResults();
-  }, [fetchResults]);
 
   const renderProducts = () => {
     return items
@@ -47,6 +45,8 @@ const Results = () => {
         );
       });
   };
+
+  if (error) history.push("/no-results");
 
   return (
     <ul className="results-container grid-layout no-row-gap">

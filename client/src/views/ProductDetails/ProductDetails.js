@@ -16,39 +16,21 @@ const ProductDetails = () => {
   const [categories, setCategories] = useState([]);
   const { id } = useParams();
 
-  const fetchCategories = (id = null) => {
-    api
-      .get(`/api/categories/${id}`)
-      .then((response) => {
-        setCategories(response.data);
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
-  };
-
   useEffect(() => {
     const fetchDetails = () => {
       api
         .get(`/api/items/${id}`)
         .then((response) => {
           setProduct(response.data.item);
+          setCategories(response.data.categories);
         })
-        .then(() => fetchCategories(product.category_id))
         .catch((error) => {
           throw new Error(error);
         });
     };
 
     fetchDetails();
-  }, [id, product.category_id]);
-
-  // const checkIfObjEmpty = (obj) => {
-  //   for (var key in obj) {
-  //     if (obj.hasOwnProperty(key)) return false;
-  //   }
-  //   return true;
-  // };
+  }, [id]);
 
   const {
     condition,
@@ -59,6 +41,7 @@ const ProductDetails = () => {
     title,
   } = product;
   const conditionTranslate = condition === "used" ? "Usado" : "Nuevo";
+
   return (
     <div className="grid-layout">
       <div className="product-details centered-in-grid">

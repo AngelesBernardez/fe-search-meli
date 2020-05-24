@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Search = () => {
-    return (
-        <h1>This is the search view.</h1>
-    )
-}
+  return <div></div>;
+};
 
 export default Search;

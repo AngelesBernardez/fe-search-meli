@@ -16,6 +16,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/api/items", items);
 app.get("/api/items/:id", itemDetailsAndDescription);
-app.get("/api/categories/:id", itemCategories);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
