@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import "./SearchInput.css";
 
 const SearchInput = ({ handleEnter, handleInput, placeholderText }) => {
@@ -16,3 +16,9 @@ const SearchInput = ({ handleEnter, handleInput, placeholderText }) => {
 };
 
 export default SearchInput;
+
+SearchInput.propTypes = {
+  handleEnter: PropTypes.func,
+  handleInput: PropTypes.func.isRequired,
+  placeholderText: PropTypes.string,
+};

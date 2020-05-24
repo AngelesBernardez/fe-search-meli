@@ -1,10 +1,10 @@
 import React from "react";
-
-import "./ResultItem.css";
 import PriceItem from "../PriceItem/PriceItem";
 import ImageItem from "../ImageItem/ImageItem";
 import SmallText from "../SmallText/SmallText";
 import ProductTitle from "../ProductTitle/ProductTitle";
+import PropTypes from "prop-types";
+import "./ResultItem.css";
 
 const ResultItem = ({
   freeShipping,
@@ -31,3 +31,12 @@ const ResultItem = ({
 };
 
 export default ResultItem;
+
+ResultItem.propTypes = {
+  freeShipping: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func,
+  location: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  price: PropTypes.object.isRequired,
+};

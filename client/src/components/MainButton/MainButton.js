@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import "./MainButton.css";
 
 const MainButton = ({ text }) => {
@@ -7,3 +7,7 @@ const MainButton = ({ text }) => {
 };
 
 export default MainButton;
+
+MainButton.propTypes = {
+  text: PropTypes.string.isRequired,
+};

@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import "./PriceItem.css";
 
 const PriceItem = ({ bigger, freeShipping, price }) => {
@@ -33,3 +33,12 @@ const PriceItem = ({ bigger, freeShipping, price }) => {
 };
 
 export default PriceItem;
+
+PriceItem.propTypes = {
+  bigger: PropTypes.bool,
+  freeShipping: PropTypes.bool,
+  price: PropTypes.shape({
+    currency: PropTypes.string.isRequired,
+    decimals: PropTypes.string,
+  }),
+};

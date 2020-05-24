@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import "./TitleAndParagraph.css";
 
 const TitleAndParagraph = ({ paragraph, title }) => {
@@ -12,3 +12,8 @@ const TitleAndParagraph = ({ paragraph, title }) => {
 };
 
 export default TitleAndParagraph;
+
+TitleAndParagraph.propTypes = {
+  paragraph: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};

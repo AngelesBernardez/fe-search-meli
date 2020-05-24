@@ -1,6 +1,7 @@
 import React from "react";
 import BreadcrumbItem from "./BreadcrumbItem/BreadcrumbItem";
 import "./Breadcrumb.css";
+import PropTypes from "prop-types";
 
 const Breadcrumb = ({ content }) => {
   const renderItems = (categories) => {
@@ -17,3 +18,7 @@ const Breadcrumb = ({ content }) => {
 };
 
 export default Breadcrumb;
+
+Breadcrumb.propTypes = {
+  content: PropTypes.arrayOf(String).isRequired,
+};
